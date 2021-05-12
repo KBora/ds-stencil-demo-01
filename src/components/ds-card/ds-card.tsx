@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'ds-card',
@@ -17,6 +17,13 @@ export class DsCard {
 
   @Prop() cardTags: string[] = ["winter", "photography", "trees"];
 
+  @Event() tagClick: EventEmitter;
+
+  private handleTagClick(event: Event, tag: string): void {
+    event.preventDefault();
+    this.tagClick.emit(tag);
+  }
+
   render() {
     return (
       <Host>
@@ -30,7 +37,10 @@ export class DsCard {
           </div>
           <div class="px-6 pt-4 pb-2">
             { this.cardTags.map( tag => 
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              <span 
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer"
+                onClick={$event => this.handleTagClick($event, tag)}
+              >
                 #{tag}
               </span>
             )}

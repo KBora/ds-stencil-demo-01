@@ -53,6 +53,7 @@ declare namespace LocalJSX {
         "cardTags"?: string[];
         "cardText"?: string;
         "cardTitle"?: string;
+        "onTagClick"?: (event: CustomEvent<any>) => void;
     }
     interface MyComponent {
         /**
