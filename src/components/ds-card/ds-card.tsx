@@ -1,9 +1,7 @@
 import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-  tag: 'ds-card',
-  styleUrl: 'ds-card.css',
-  shadow: false,
+  tag: 'ds-card'
 })
 export class DsCard {
 
